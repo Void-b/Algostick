@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../animations/bubble_sort_scene.dart';
 import '../animations/dfs_maze_scene.dart';
+import '../animations/error_attack_scene.dart';
+import '../animations/learning_game_scene.dart';
 
 class Algorithm {
   final String id;
@@ -57,5 +59,43 @@ final algorithms = [
           stack.push(neighbor)
           
   return failure''',
+  ),
+  Algorithm(
+    id: 'error-attack',
+    name: 'Error Attack',
+    description: 'Practice dodging and fixing coding errors in an interactive game',
+    icon: Icons.bug_report,
+    sceneBuilder: () => const ErrorAttackScene(
+      question: 'What is the correct syntax for a for loop in Python?',
+      correctSequence: ['for', 'i', 'in', 'range(10):', '    print(i)'],
+      userInput: [],
+    ),
+    pseudoCode: '''function handleError(error):
+  if isTypingError(error):
+    highlight incorrect syntax
+    show correction hint
+  else if isLogicError(error):
+    explain the logical mistake
+    suggest proper approach''',
+  ),
+  Algorithm(
+    id: 'learning-game',
+    name: 'Algorithm Adventure',
+    description: 'Navigate through coding challenges and defeat bugs in this educational game',
+    icon: Icons.sports_esports,
+    sceneBuilder: () => const LearningGameScene(
+      level: 1,
+      problem: 'Solve: What is the time complexity of bubble sort?',
+      options: ['O(n)', 'O(n²)', 'O(log n)', 'O(n log n)'],
+      correctAnswerIndex: 1,
+    ),
+    pseudoCode: '''function playLevel(difficulty):
+  problem = generateProblem(difficulty)
+  while not gameOver:
+    handlePlayerMovement()
+    checkCollisions()
+    if problemSolved:
+      increaseScore()
+      nextLevel()''',
   ),
 ];
